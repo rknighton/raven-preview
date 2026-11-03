@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raven rig test</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #181b20; color: #c9ced6; font: 15px/1.5 system-ui, sans-serif; }
+  .page { display: grid; grid-template-columns: minmax(0, 1fr) 420px; min-height: 100vh; }
+  main { padding: 48px 56px; max-width: 640px; }
+  main h1 { font: 600 34px/1.15 Georgia, serif; color: #eef1f5; margin: 0 0 16px; }
+  aside { position: sticky; top: 0; height: 100vh; border-left: 1px solid #262b33; background: #1d2128; }
+  #stage { width: 100%; height: 100%; display: block; }
+  .controls { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+  button { background: #2a3039; color: #dfe4ea; border: 1px solid #39414c; border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+  button:hover { background: #333a45; }
+  #status { position: absolute; top: 12px; left: 16px; font-size: 12px; color: #8a93a0; }
+  @media (max-width: 760px) {  /* phone: raven on top, text below */
+    .page { grid-template-columns: 1fr; }
+    aside { position: relative; order: -1; height: 72vh; border-left: 0; border-bottom: 1px solid #262b33; }
+    main { padding: 24px 20px; }
+    main h1 { font-size: 26px; }
+    button { padding: 10px 14px; font-size: 15px; }
+    #stage { touch-action: none; }
+  }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div class="page">
+  <main>
+    <h1>Raven rig test</h1>
+    <p>This page is a placeholder for site content. The raven in the side panel follows the
+    pointer with its head and neck. The buttons spread and fold its wings.</p>
+    <p>Model: "Raven Model" by lovadahn, CC BY 4.0, rigged and shaded for this test.</p>
+  </main>
+  <aside>
+    <canvas id="stage"></canvas>
+    <div id="status">loading…</div>
+    <div class="controls">
+      <button id="spread">Spread wings</button>
+      <button id="fold">Fold wings</button>
+      <button id="stretch">Stretch</button>
+      <button id="caw">Caw</button>
+      <button id="view">Change view</button>
+    </div>
+  </aside>
+</div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
